@@ -1,7 +1,7 @@
 services:
   - type: web
-    name: kord-bot
-    repo: https://github.com/M3264/Kord-Ai.git
+    name: MD-RK-bot
+    repo: https://github.com/Boywithnofriends/MT-RK.git
     branch: master
     env: docker
     dockerfilePath: Dockerfile
