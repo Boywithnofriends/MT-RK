@@ -1,7 +1,7 @@
 {
-  "name": "kord",
+  "name": "MT-RK",
   "version": "2.0.0",
-  "description": "whatsapp bot made with baileys",
+  "description": "fonked and changed to royal",
   "main": "index.js",
   "scripts": {
     "test": "node index.js",
@@ -11,17 +11,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/M3264/Kord-Ai.git"
+    "url": "git+https://github.com/Boywithnofriends/MT-RK.git"
   },
   "keywords": [
     "whatsapp-bot"
   ],
-  "author": "M3264",
+  "author": "mudau",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/M3264/Kord-Ai/issues"
   },
-  "homepage": "https://github.com/M3264/Kord-Ai#readme",
+  "homepage": "https://github.com/Boywithnofriends/MT-RK#readme",
   "dependencies": {
     "axios": "^0.27.2",
     "baileys": "7.0.0-rc.9",
