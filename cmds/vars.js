@@ -600,33 +600,119 @@ if (text.trim().toLowerCase() === 'admins') {
 })
 
 kord({
-cmd: "getmods|getmod|allmods",
-  desc: "get all mods",
+  cmd: "mods",
+  desc: "get all MT-RK royal guards (mods)",
   fromMe: wtype,
   type: "config",
 }, async (m, text) => {
   try {
     var modList = (config().MODS || "")
-    .split(",")
-    .map(n => n.trim())
-    .filter(n => n)
-    
-    if (modList.length == 0)
-    return await m.send("_Mod list is empty_")
-    var msg = "「 MOD LIST 」\n"
-    var mentionJids = []
+      .split(",")
+      .map(n => n.trim())
+      .filter(n => n);
+
+    if (modList.length === 0)
+      return await m.send("_Mod list is empty_");
+
+    // Build message
+    var msg = 
+`╔═══🛡️ ROYAL MODS 🛡️═══╗
+     Active Guards List
+╚═════════════════════╝\n\n`;
+
+    var mentionJids = [];
+
     for (var u of modList) {
-    msg += `❑ @${u}\n`
-    mentionJids.push(u + '@s.whatsapp.net')
+      msg += `• @${u}\n`;
+      mentionJids.push(u + "@s.whatsapp.net");
     }
-    var fmsg = `\`\`\`${msg}\`\`\``
-    return await m.send(fmsg, {
-    mentions: mentionJids })
+
+    msg += 
+`\n═════════════════════
+> ⚠️ Unnecessary tagging may lead to restriction from using MT-RK bots.`;
+
+    return await m.send(msg, { mentions: mentionJids });
+
   } catch (e) {
-    console.log("cmd error", e)
-    return await m.sendErr(e)
+    console.log("cmd error", e);
+    return await m.sendErr(e);
   }
-})
+});
+
+kord({
+  cmd: "support",
+  desc: "Official MT-RK support links",
+  fromMe: false,
+  type: "info"
+}, async (m, text) => {
+  try {
+    const msg = `彡─✦『 🛡️ MT-RK OFFICIAL SUPPORT 』✦─彡
+
+OWNER:
+• +27675859928
+  – Official MT-RK owner and project head.
+
+COMMUNITY (Main):
+https://chat.whatsapp.com/C87PG6qBbYFBybNauJQeUa
+
+If the main link does not work:
+
+COMMUNITY (Backup Link):
+https://chat.whatsapp.com/J0cmSfcWju1BSD9hIPJ8LT?mode=hqrc
+
+彡──────────────────────彡
+> For updates, help, bug reports, and announcements, join the official community.
+
+🗡️ Developers: Luffy & Mudau Thendo`;
+
+    return await m.send(msg);
+  } catch (e) {
+    console.log("support cmd error", e);
+    return await m.sendErr(e);
+  }
+});
+
+kord({
+  cmd: "help",
+  desc: "MT-RK help desk and staff contacts",
+  fromMe: false,
+  type: "info"
+}, async (m, text) => {
+  try {
+    const msg = `╔════ MT-RK HELP DESK ════╗
+        Official Support Directory
+╚════════════════════════════╝
+
+📞 STAFF CONTACTS
+
+👑 Owner
+• Number: +27675859928
+• Role: Creator of MT-RK Bot
+• DM for: Bot info, permissions, features
+
+💼 CEO
+• Number: +23480620970
+• Role: CEO of MT-RK
+• DM for: Business, decisions, admin issues
+
+🛡️ Royal Guards (MODS)
+• Use .mods to see full list
+• Role: Protect the bot, fix issues, ban abusers
+• DM them for: Help, bug reports, moderation issues
+
+════════════════════════
+> Only DM staff for real problems.
+> Spamming staff may get you blocked.
+════════════════════════
+
+🗡️ Developers: unknown & Mudau Thendo`;
+
+    return await m.send(msg);
+  } catch (e) {
+    console.log("help cmd error", e);
+    return await m.sendErr(e);
+  }
+});
 
 
 kord({
